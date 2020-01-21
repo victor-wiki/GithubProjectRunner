@@ -98,7 +98,7 @@ namespace GithubProjectHandler
                         Utility.OpenFolder(workDirectory);
                         break;
                     default:
-                        this.Feedback(this.ProjectInfo, $"You haven't specified the action for language {this.ProjectInfo.Language}.", FeedbackInfoType.Warnning);
+                        this.Feedback(this.ProjectInfo, $"You haven't specified action for language {this.ProjectInfo.Language}.", FeedbackInfoType.Warnning);
                         Utility.OpenFolder(workDirectory);
                         break;
                 }
