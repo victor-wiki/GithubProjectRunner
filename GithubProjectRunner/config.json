@@ -1,0 +1,17 @@
+{
+  "Languages": [ "C#", "Java", "Python", "PHP", "C++", "C", "Objective-C", "JavaScript", "CSS", "HTML" ],
+  "AfterActions": [
+    {
+      "Name": "BuildAndRun",
+      "Description": "Build and run"
+    },
+    {
+      "Name": "OpenSolutionOrProject",
+      "Description": "Open solution or project"
+    },
+    {
+      "Name": "OpenInExplore",
+      "Description": "Open in explorer"
+    }
+  ]
+}
