@@ -4,10 +4,10 @@ namespace GithubProjectHandler
 {
     public class Setting
     {
-        public string HomePage { get; set; }
-        public string DefaultLanguage { get; set; }      
+        public string HomePage { get; set; }        
         public string DownloadFolder { get; set; }
         public string GitWorkFolder { get; set; }
+        public string PreferredLanguage { get; set; }
         public bool EnableLog { get; set; } = true;
         public bool EnableDebug { get; set; } = true;
         public bool AlwaysGetlatestVersion { get; set; } = true;

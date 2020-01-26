@@ -23,7 +23,7 @@ namespace GithubProjectRunner
 
         private void frmSetting_Load(object sender, EventArgs e)
         {
-            this.setting = SettingManager.GetSetting();
+            this.setting = SettingManager.GetSetting();           
             this.txtHomepage.Text = setting.HomePage;
             this.txtDownloadFolder.Text = setting.DownloadFolder;
             this.txtGitWorkFolder.Text = setting.GitWorkFolder;
@@ -37,7 +37,13 @@ namespace GithubProjectRunner
                 this.txtDownloadFolder.Text = SettingManager.DefaultDownloadFolder;
             }
 
-            Config config = ConfigManager.GetConfig();          
+            Config config = ConfigManager.GetConfig();
+            this.cboLanguage.Items.Add("");
+            foreach (string language in config.Languages)
+            {
+                this.cboLanguage.Items.Add(language);
+            }
+            this.cboLanguage.Text = setting.PreferredLanguage;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -58,7 +64,7 @@ namespace GithubProjectRunner
             setting.EnableLog = this.chkEnableLog.Checked;
             setting.EnableDebug = this.chkEnableDebug.Checked;           
             setting.LanguageSettings = this.languageSettings;
-
+            setting.PreferredLanguage = this.cboLanguage.Text;
             SettingManager.SaveSetting(setting);
 
             this.DialogResult = DialogResult.OK;

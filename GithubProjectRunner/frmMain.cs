@@ -77,9 +77,10 @@ namespace GithubProjectRunner
                 this.cboLanguage.Items.Add(language);
             }
 
-            if (!string.IsNullOrEmpty(setting.DefaultLanguage))
+            this.cboLanguage.Items.Add("");
+            if (!string.IsNullOrEmpty(setting.PreferredLanguage))
             {
-                this.cboLanguage.Text = setting.DefaultLanguage;
+                this.cboLanguage.Text = setting.PreferredLanguage;
             }
         }
 

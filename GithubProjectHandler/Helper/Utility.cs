@@ -175,7 +175,7 @@ namespace GithubProjectHandler
                         if (e.Data.Contains("is running"))
                         {
                             Process.Start($"http://localhost:{port}");
-                        }
+                        }                        
                     }, null);
 
                     break;
