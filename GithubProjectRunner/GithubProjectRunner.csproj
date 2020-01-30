@@ -133,6 +133,12 @@
     <Compile Include="frmBuildOpenToolSetting.Designer.cs">
       <DependentUpon>frmBuildOpenToolSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCustomAction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCustomAction.Designer.cs">
+      <DependentUpon>frmCustomAction.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmExetuableFiles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmBuildOpenToolSetting.resx">
       <DependentUpon>frmBuildOpenToolSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCustomAction.resx">
+      <DependentUpon>frmCustomAction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmExetuableFiles.resx">
       <DependentUpon>frmExetuableFiles.cs</DependentUpon>

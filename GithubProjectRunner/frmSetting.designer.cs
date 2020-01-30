@@ -49,6 +49,8 @@
             this.txtHomepage = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cboLanguage = new System.Windows.Forms.ComboBox();
+            this.chkOpenExplorerBeforeOpeningProject = new System.Windows.Forms.CheckBox();
+            this.chkOpenProjectBeforeBuildingAndRun = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,7 +86,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(474, 273);
+            this.btnOK.Location = new System.Drawing.Point(474, 338);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 13;
@@ -95,7 +97,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(555, 273);
+            this.btnCancel.Location = new System.Drawing.Point(555, 338);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 14;
@@ -107,7 +109,7 @@
             // 
             this.groupBox2.Controls.Add(this.chkEnableDebug);
             this.groupBox2.Controls.Add(this.chkEnableLog);
-            this.groupBox2.Location = new System.Drawing.Point(12, 200);
+            this.groupBox2.Location = new System.Drawing.Point(9, 265);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(621, 67);
             this.groupBox2.TabIndex = 8;
@@ -219,7 +221,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 167);
+            this.label5.Location = new System.Drawing.Point(13, 235);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(119, 12);
             this.label5.TabIndex = 15;
@@ -229,16 +231,38 @@
             // 
             this.cboLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLanguage.FormattingEnabled = true;
-            this.cboLanguage.Location = new System.Drawing.Point(137, 164);
+            this.cboLanguage.Location = new System.Drawing.Point(137, 232);
             this.cboLanguage.Name = "cboLanguage";
             this.cboLanguage.Size = new System.Drawing.Size(75, 20);
             this.cboLanguage.TabIndex = 16;
+            // 
+            // chkOpenExplorerBeforeOpeningProject
+            // 
+            this.chkOpenExplorerBeforeOpeningProject.AutoSize = true;
+            this.chkOpenExplorerBeforeOpeningProject.Location = new System.Drawing.Point(15, 168);
+            this.chkOpenExplorerBeforeOpeningProject.Name = "chkOpenExplorerBeforeOpeningProject";
+            this.chkOpenExplorerBeforeOpeningProject.Size = new System.Drawing.Size(312, 16);
+            this.chkOpenExplorerBeforeOpeningProject.TabIndex = 17;
+            this.chkOpenExplorerBeforeOpeningProject.Text = "Open explorer before opening solution or project";
+            this.chkOpenExplorerBeforeOpeningProject.UseVisualStyleBackColor = true;
+            // 
+            // chkOpenProjectBeforeBuildingAndRun
+            // 
+            this.chkOpenProjectBeforeBuildingAndRun.AutoSize = true;
+            this.chkOpenProjectBeforeBuildingAndRun.Location = new System.Drawing.Point(15, 200);
+            this.chkOpenProjectBeforeBuildingAndRun.Name = "chkOpenProjectBeforeBuildingAndRun";
+            this.chkOpenProjectBeforeBuildingAndRun.Size = new System.Drawing.Size(312, 16);
+            this.chkOpenProjectBeforeBuildingAndRun.TabIndex = 18;
+            this.chkOpenProjectBeforeBuildingAndRun.Text = "Open solution or project before building and run";
+            this.chkOpenProjectBeforeBuildingAndRun.UseVisualStyleBackColor = true;
             // 
             // frmSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 308);
+            this.ClientSize = new System.Drawing.Size(648, 373);
+            this.Controls.Add(this.chkOpenProjectBeforeBuildingAndRun);
+            this.Controls.Add(this.chkOpenExplorerBeforeOpeningProject);
             this.Controls.Add(this.cboLanguage);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtHomepage);
@@ -289,5 +313,7 @@
         private System.Windows.Forms.TextBox txtHomepage;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cboLanguage;
+        private System.Windows.Forms.CheckBox chkOpenExplorerBeforeOpeningProject;
+        private System.Windows.Forms.CheckBox chkOpenProjectBeforeBuildingAndRun;
     }
 }

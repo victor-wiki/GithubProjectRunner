@@ -11,6 +11,8 @@ namespace GithubProjectHandler
         public bool EnableLog { get; set; } = true;
         public bool EnableDebug { get; set; } = true;
         public bool AlwaysGetlatestVersion { get; set; } = true;
+        public bool OpenExplorerBeforeOpeningSolutionOrProject { get; set; }
+        public bool OpenSolutionOrProjectBeforeBuildingAndRun { get; set; }
 
         public List<LanguageSetting> LanguageSettings { get; set; } = new List<LanguageSetting>();
     }
@@ -24,5 +26,14 @@ namespace GithubProjectHandler
         public string OpenToolPath { get; set; }
         public string OpenToolArgs { get; set; }
         public bool OpenAsAdmin { get; set; }
+        public CustomActionType CustomActionType { get; set; }
+        public string CustomActionContent { get; set; }
+    }
+
+    public enum CustomActionType
+    {
+        None=0,
+        File=1,
+        Text=2
     }
 }

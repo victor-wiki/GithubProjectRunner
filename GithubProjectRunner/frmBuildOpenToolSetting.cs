@@ -41,6 +41,8 @@ namespace GithubProjectRunner
                     setting.OpenToolPath = oldSetting.OpenToolPath;
                     setting.OpenToolArgs = oldSetting.OpenToolArgs;
                     setting.OpenAsAdmin = oldSetting.OpenAsAdmin;
+                    setting.CustomActionType = oldSetting.CustomActionType;
+                    setting.CustomActionContent = oldSetting.CustomActionContent;
                 }
 
                 languageSettings.Add(setting);
@@ -48,10 +50,10 @@ namespace GithubProjectRunner
 
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.DataSource = languageSettings;
-          
+
             this.AfterAction.DataSource = config.AfterActions;
             this.AfterAction.DisplayMember = "Description";
-            this.AfterAction.ValueMember = "Name";            
+            this.AfterAction.ValueMember = "Name";
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -84,7 +86,7 @@ namespace GithubProjectRunner
         {
             string columnName = this.dataGridView1.Columns[e.ColumnIndex].DataPropertyName;
 
-            if ((columnName== nameof(LanguageSetting.BuildToolPath) || columnName== nameof(LanguageSetting.OpenToolPath)) && e.RowIndex >= 0)
+            if ((columnName == nameof(LanguageSetting.BuildToolPath) || columnName == nameof(LanguageSetting.OpenToolPath)) && e.RowIndex >= 0)
             {
                 string path = this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString();
 
@@ -105,6 +107,44 @@ namespace GithubProjectRunner
 
                     this.dataGridView1.EndEdit();
                     this.dataGridView1.CurrentCell = null;
+                }
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (this.dataGridView1.Columns[e.ColumnIndex].Name == "CustomActionContent")
+            {
+                DataGridViewCell actionCell = this.dataGridView1.Rows[e.RowIndex].Cells["AfterAction"];
+                if (actionCell.Value?.ToString() != "Custom")
+                {
+                    MessageBox.Show("The function is only for custom action.");
+                    return;
+                }
+
+                string language = this.dataGridView1.Rows[e.RowIndex].Cells["Language"].Value.ToString();
+
+                DataGridViewCell cell = this.dataGridView1.CurrentCell;
+
+                LanguageSetting setting = this.languageSettings[e.RowIndex];
+
+                if (setting == null)
+                {
+                    setting = new LanguageSetting() { Language = language };
+                }
+
+                frmCustomAction frmCustomAction = new frmCustomAction()
+                {
+                    CustomActionType = setting == null ? CustomActionType.File : setting.CustomActionType,
+                    CustomActionContent = setting?.CustomActionContent
+                };
+
+                DialogResult result = frmCustomAction.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    setting.CustomActionType = frmCustomAction.CustomActionType;
+                    setting.CustomActionContent = frmCustomAction.CustomActionContent;
+                    cell.Tag = setting;
                 }
             }
         }

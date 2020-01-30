@@ -31,6 +31,8 @@ namespace GithubProjectRunner
             this.chkEnableLog.Checked = setting.EnableLog;
             this.chkEnableDebug.Checked = setting.EnableDebug;
             this.languageSettings = setting.LanguageSettings;
+            this.chkOpenExplorerBeforeOpeningProject.Checked = setting.OpenExplorerBeforeOpeningSolutionOrProject;
+            this.chkOpenProjectBeforeBuildingAndRun.Checked = setting.OpenSolutionOrProjectBeforeBuildingAndRun;
 
             if(string.IsNullOrEmpty(setting.DownloadFolder))
             {
@@ -65,6 +67,9 @@ namespace GithubProjectRunner
             setting.EnableDebug = this.chkEnableDebug.Checked;           
             setting.LanguageSettings = this.languageSettings;
             setting.PreferredLanguage = this.cboLanguage.Text;
+            setting.OpenExplorerBeforeOpeningSolutionOrProject = this.chkOpenExplorerBeforeOpeningProject.Checked;
+            setting.OpenSolutionOrProjectBeforeBuildingAndRun = this.chkOpenProjectBeforeBuildingAndRun.Checked;
+
             SettingManager.SaveSetting(setting);
 
             this.DialogResult = DialogResult.OK;

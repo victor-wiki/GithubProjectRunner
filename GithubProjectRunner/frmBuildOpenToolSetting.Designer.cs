@@ -31,6 +31,8 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.lblTip = new System.Windows.Forms.Label();
             this.Language = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AfterAction = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.BuildToolPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,8 +40,7 @@
             this.OpenToolPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpenToolArgs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpenAsAdmin = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.lblTip = new System.Windows.Forms.Label();
+            this.CustomActionContent = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +80,8 @@
             this.BuildToolArgs,
             this.OpenToolPath,
             this.OpenToolArgs,
-            this.OpenAsAdmin});
+            this.OpenAsAdmin,
+            this.CustomActionContent});
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
@@ -87,7 +89,25 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(1224, 355);
             this.dataGridView1.TabIndex = 7;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "exe file|*.exe|all files|*.*";
+            this.openFileDialog1.RestoreDirectory = true;
+            // 
+            // lblTip
+            // 
+            this.lblTip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTip.AutoSize = true;
+            this.lblTip.Font = new System.Drawing.Font("宋体", 10F);
+            this.lblTip.Location = new System.Drawing.Point(12, 372);
+            this.lblTip.Name = "lblTip";
+            this.lblTip.Size = new System.Drawing.Size(560, 14);
+            this.lblTip.TabIndex = 8;
+            this.lblTip.Text = "Tip: Double click the tool path cell of the grid can show file choosing dialog.";
             // 
             // Language
             // 
@@ -143,22 +163,12 @@
             this.OpenAsAdmin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.OpenAsAdmin.Width = 120;
             // 
-            // openFileDialog1
+            // CustomActionContent
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "exe file|*.exe|all files|*.*";
-            this.openFileDialog1.RestoreDirectory = true;
-            // 
-            // lblTip
-            // 
-            this.lblTip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblTip.AutoSize = true;
-            this.lblTip.Font = new System.Drawing.Font("宋体", 10F);
-            this.lblTip.Location = new System.Drawing.Point(12, 372);
-            this.lblTip.Name = "lblTip";
-            this.lblTip.Size = new System.Drawing.Size(560, 14);
-            this.lblTip.TabIndex = 8;
-            this.lblTip.Text = "Tip: Double click the tool path cell of the grid can show file choosing dialog.";
+            this.CustomActionContent.HeaderText = "Custom action content";
+            this.CustomActionContent.Name = "CustomActionContent";
+            this.CustomActionContent.Text = "Define";
+            this.CustomActionContent.UseColumnTextForButtonValue = true;
             // 
             // frmBuildOpenToolSetting
             // 
@@ -194,5 +204,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn OpenToolPath;
         private System.Windows.Forms.DataGridViewTextBoxColumn OpenToolArgs;
         private System.Windows.Forms.DataGridViewCheckBoxColumn OpenAsAdmin;
+        private System.Windows.Forms.DataGridViewButtonColumn CustomActionContent;
     }
 }

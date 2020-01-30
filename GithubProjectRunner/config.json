@@ -2,16 +2,20 @@
   "Languages": [ "C#", "Java", "Python", "PHP", "C++", "C", "Objective-C", "JavaScript", "CSS", "HTML" ],
   "AfterActions": [
     {
-      "Name": "BuildAndRun",
-      "Description": "Build and run"
+      "Name": "OpenInExplore",
+      "Description": "Open in explorer"
     },
     {
       "Name": "OpenSolutionOrProject",
       "Description": "Open solution or project"
     },
     {
-      "Name": "OpenInExplore",
-      "Description": "Open in explorer"
+      "Name": "BuildAndRun",
+      "Description": "Build and run"
+    },
+    {
+      "Name": "Custom",
+      "Description": "Custom action"
     }
   ]
 }

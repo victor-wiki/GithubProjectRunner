@@ -8,8 +8,9 @@
 
     public enum AfterActionType
     {
-        BuildAndRun=0,
-        OpenSolutionOrProject=1,
-        OpenInExplorer=2     
+        BuildAndRun=2,
+        OpenSolutionOrProject=4,
+        OpenInExplorer=8,
+        Custom=10
     }
 }
