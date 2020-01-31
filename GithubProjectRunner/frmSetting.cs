@@ -54,7 +54,7 @@ namespace GithubProjectRunner
 
             if(!string.IsNullOrEmpty(homepage) && !homepage.Contains(SettingManager.DomainName))
             {
-                MessageBox.Show($"The homepage must be one page of {SettingManager.DomainName}.");
+                MessageBox.Show($"The startup page must be one page of {SettingManager.DomainName}.");
                 return;
             }
 
