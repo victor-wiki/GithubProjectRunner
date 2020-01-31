@@ -145,17 +145,24 @@ namespace GithubProjectHandler
                 {
                     foreach (var website in this.ProjectInfo.Websites.Where(item=>item.IsWebservice))
                     {
-                        this.Feedback(this.ProjectInfo, $"It begins to start service site \"{website.DirectoryInfo.Name}\".");
-                        Utility.RunDonetWebsite(website.DirectoryInfo.Name);
+                        this.RunWebsite(website);
                     }
 
                     foreach (var website in this.ProjectInfo.Websites.Where(item => !item.IsWebservice))
-                    {
-                        this.Feedback(this.ProjectInfo, $"It begins to start website \"{website.DirectoryInfo.Name}\".");
-                        Utility.RunDonetWebsite(website.DirectoryInfo.Name);
+                    {                        
+                        this.RunWebsite(website);
                     }
                 }
             }
+        }
+
+        private void RunWebsite(WebsiteInfo website)
+        {
+            this.Feedback(this.ProjectInfo, $"It begins to start {(website.IsWebservice? "service site": "website")} \"{website.DirectoryInfo.Name}\".");
+            Utility.RunDonetWebsite(website.DirectoryInfo.Name, (data) =>
+            {
+                this.Feedback(this.ProjectInfo, data, FeedbackInfoType.Info);
+            });
         }
     }
 }

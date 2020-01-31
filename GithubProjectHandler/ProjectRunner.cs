@@ -221,7 +221,7 @@ namespace GithubProjectHandler
         {
             if (File.Exists(this.projectInfo.DownloadedFilePath))
             {
-                this.Feedback(this.projectInfo, $"Unzip file:{this.projectInfo.DownloadedFilePath}");
+                this.Feedback(this.projectInfo, $"Unzip file \"{this.projectInfo.DownloadedFilePath}\".");
                 FileInfo file = new FileInfo(this.projectInfo.DownloadedFilePath);
                 string extractFolder = file.DirectoryName;
                 (new FastZip()).ExtractZip(this.projectInfo.DownloadedFilePath, extractFolder, "");

@@ -37,6 +37,8 @@ namespace GithubProjectRunner
                     this.txtActionText.Text = this.CustomActionContent;
                 }
             }
+
+            this.SetControlState();
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -91,6 +93,23 @@ namespace GithubProjectRunner
             {
                 this.txtActionFile.Text = this.openFileDialog1.FileName;
             }
+        }
+
+        private void SetControlState()
+        {
+            this.txtActionFile.Enabled = this.rbFile.Checked;
+            this.btnActionFile.Enabled = this.rbFile.Checked;
+            this.txtActionText.Enabled = this.rbText.Checked;
+        }
+
+        private void rbFile_CheckedChanged(object sender, EventArgs e)
+        {
+            this.SetControlState();
+        }
+
+        private void rbText_CheckedChanged(object sender, EventArgs e)
+        {
+            this.SetControlState();
         }
     }
 }

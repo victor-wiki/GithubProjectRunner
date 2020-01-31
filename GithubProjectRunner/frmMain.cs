@@ -55,7 +55,7 @@ namespace GithubProjectRunner
         {
             InitializeComponent();
             TextBox.CheckForIllegalCrossThreadCalls = false;
-            RichTextBox.CheckForIllegalCrossThreadCalls = false;
+            RichTextBox.CheckForIllegalCrossThreadCalls = false;           
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -142,7 +142,7 @@ namespace GithubProjectRunner
         {
             if (e.IsLoading == false)
             {
-
+               
             }
         }
 
@@ -268,10 +268,13 @@ namespace GithubProjectRunner
         {
             try
             {
+                this.SetControlState(false);
                 await this.Run(false, gitClone);
+                this.SetControlState(true);
             }
             catch (Exception ex)
             {
+                this.SetControlState(true);
                 if (this.setting.EnableLog)
                 {
                     LogHelper.LogInfo(LogHelper.DefaultLogFilePath, ex.Message);
@@ -280,6 +283,12 @@ namespace GithubProjectRunner
                 this.Feedback(new FeedbackInfo() { InfoType = FeedbackInfoType.Error, Content = ex.Message });
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void SetControlState(bool enabled)
+        {
+            this.btnRun.Enabled = enabled;
+            this.btnCloneAndRun.Enabled = enabled;
         }
 
         private async void btnCloneAndRun_Click(object sender, EventArgs e)

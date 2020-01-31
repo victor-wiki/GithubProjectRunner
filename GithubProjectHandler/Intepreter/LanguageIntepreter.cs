@@ -86,7 +86,7 @@ namespace GithubProjectHandler
                         {
                             foreach (var slnFile in this.SolutionFiles)
                             {
-                                this.Feedback(this.ProjectInfo, $"Build using file \"{slnFile.FullName}\".");
+                                this.Feedback(this.ProjectInfo, $"Build solution using file \"{slnFile.FullName}\".");
                                 await this.Build(slnFile);
                             }
                         }
@@ -175,7 +175,7 @@ namespace GithubProjectHandler
 
         public virtual async Task Build(FileInfo file)
         {
-            this.Feedback(this.ProjectInfo, $"Build using file:{file.FullName}");
+            this.Feedback(this.ProjectInfo, $"Build file \"{file.FullName}\".");
         }
 
         public virtual async Task Run()

@@ -1,4 +1,5 @@
 ﻿using ICSharpCode.SharpZipLib.Zip;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -154,11 +155,11 @@ namespace GithubProjectHandler
             }
         }
 
-        public static void RunDonetWebsite(string path)
+        public static void RunDonetWebsite(string path, Action<string> feedback)
         {
             string sysDrive = Path.GetPathRoot(Environment.SystemDirectory);
             List<string> iisExpressFolders = new List<string>() { @"Program Files\IIS Express", @"Program Files (x86)\IIS Express" };
-            bool found = false;
+            bool found = false;          
 
             foreach (string iisExpFolder in iisExpressFolders)
             {
@@ -172,10 +173,19 @@ namespace GithubProjectHandler
 
                     ProcessHelper.StartFile(iisExpPath, args, (sender, e) =>
                     {
-                        if (e.Data.Contains("is running"))
+                        if (e.Data != null)
                         {
-                            Process.Start($"http://localhost:{port}");
-                        }                        
+                            if (feedback != null)
+                            {
+                                feedback(e.Data);
+                            }
+
+                            if (e.Data.Contains("is running"))
+                            {
+                                OpenUrl($"http://localhost:{port}");
+                            }
+                        }
+
                     }, null);
 
                     break;
@@ -186,8 +196,54 @@ namespace GithubProjectHandler
             {
                 CassiniDev.Server server = new CassiniDev.Server(path);
                 server.Start();
-                Process.Start(server.RootUrl);
+                OpenUrl(server.RootUrl);
             }
+        }
+
+        public static void OpenUrl(string url)
+        {
+            string browser = GetSystemDefaultBrowser();
+
+            if(!string.IsNullOrEmpty(browser))
+            {
+                Process.Start(browser, url);
+            }
+            else
+            {
+                Process.Start(url);
+            }
+        }
+
+        public static string GetSystemDefaultBrowser()
+        {
+            string name = string.Empty;
+            RegistryKey regKey = null;
+
+            try
+            {
+                var regDefault = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FileExts\\.htm\\UserChoice", false);
+                var stringDefault = regDefault.GetValue("ProgId");
+
+                regKey = Registry.ClassesRoot.OpenSubKey(stringDefault + "\\shell\\open\\command", false);
+                name = regKey.GetValue(null).ToString().ToLower().Replace("" + (char)34, "");
+
+                if (!name.EndsWith("exe"))
+                {
+                    name = name.Substring(0, name.LastIndexOf(".exe") + 4);
+                }
+            }
+            catch (Exception ex)
+            {                
+            }
+            finally
+            {
+                if (regKey != null)
+                {
+                    regKey.Close();
+                }                 
+            }          
+
+            return name;
         }
     }
 }

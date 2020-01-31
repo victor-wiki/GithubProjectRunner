@@ -61,6 +61,7 @@
             this.rbFile.TabStop = true;
             this.rbFile.Text = "File";
             this.rbFile.UseVisualStyleBackColor = true;
+            this.rbFile.CheckedChanged += new System.EventHandler(this.rbFile_CheckedChanged);
             // 
             // rbText
             // 
@@ -71,6 +72,7 @@
             this.rbText.TabIndex = 2;
             this.rbText.Text = "Text";
             this.rbText.UseVisualStyleBackColor = true;
+            this.rbText.CheckedChanged += new System.EventHandler(this.rbText_CheckedChanged);
             // 
             // label2
             // 

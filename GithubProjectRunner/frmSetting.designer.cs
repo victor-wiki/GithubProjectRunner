@@ -145,7 +145,7 @@
             this.chkAlwaysGetLatestVersion.AutoSize = true;
             this.chkAlwaysGetLatestVersion.Checked = true;
             this.chkAlwaysGetLatestVersion.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkAlwaysGetLatestVersion.Location = new System.Drawing.Point(15, 98);
+            this.chkAlwaysGetLatestVersion.Location = new System.Drawing.Point(14, 98);
             this.chkAlwaysGetLatestVersion.Name = "chkAlwaysGetLatestVersion";
             this.chkAlwaysGetLatestVersion.Size = new System.Drawing.Size(174, 16);
             this.chkAlwaysGetLatestVersion.TabIndex = 8;
@@ -155,7 +155,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 134);
+            this.label3.Location = new System.Drawing.Point(12, 134);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(125, 12);
             this.label3.TabIndex = 9;
@@ -205,9 +205,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(12, 13);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 12);
+            this.label4.Size = new System.Drawing.Size(143, 12);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Homepage of github:";
+            this.label4.Text = "Startup page of github:";
             // 
             // txtHomepage
             // 
@@ -221,7 +221,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 235);
+            this.label5.Location = new System.Drawing.Point(12, 235);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(119, 12);
             this.label5.TabIndex = 15;

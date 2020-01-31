@@ -105,7 +105,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelBrowser.Location = new System.Drawing.Point(3, 0);
             this.panelBrowser.Name = "panelBrowser";
-            this.panelBrowser.Size = new System.Drawing.Size(930, 347);
+            this.panelBrowser.Size = new System.Drawing.Size(930, 350);
             this.panelBrowser.TabIndex = 11;
             // 
             // menuStrip1
@@ -198,15 +198,13 @@
             // 
             // txtMessage
             // 
-            this.txtMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMessage.BackColor = System.Drawing.Color.White;
-            this.txtMessage.Location = new System.Drawing.Point(0, 3);
+            this.txtMessage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtMessage.Location = new System.Drawing.Point(0, 0);
             this.txtMessage.Name = "txtMessage";
             this.txtMessage.ReadOnly = true;
             this.txtMessage.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txtMessage.Size = new System.Drawing.Size(933, 19);
+            this.txtMessage.Size = new System.Drawing.Size(933, 27);
             this.txtMessage.TabIndex = 17;
             this.txtMessage.Text = "";
             // 
@@ -222,13 +220,13 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.panelBrowser);
+            this.splitContainer1.Panel1MinSize = 20;
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.txtMessage);
-            this.splitContainer1.Panel2MinSize = 20;
-            this.splitContainer1.Size = new System.Drawing.Size(933, 371);
-            this.splitContainer1.SplitterDistance = 346;
+            this.splitContainer1.Size = new System.Drawing.Size(933, 375);
+            this.splitContainer1.SplitterDistance = 345;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 0;
             // 
