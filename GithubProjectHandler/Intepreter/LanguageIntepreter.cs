@@ -194,13 +194,15 @@ namespace GithubProjectHandler
             if (string.IsNullOrEmpty(filePath))
             {
                 filePath = this.ProjectFiles.FirstOrDefault()?.FullName;
-            }           
+            }            
             
             if (this.LanguageSetting.CustomActionType == CustomActionType.File)
             {
-                if(File.Exists(this.LanguageSetting.CustomActionContent))
+                string customFile = this.LanguageSetting.CustomActionContent;
+                if (File.Exists(customFile))
                 {
-                    ProcessHelper.StartFile(this.LanguageSetting.CustomActionContent, filePath, this.Process_OutputDataReceived, this.Process_ErrorDataReceived);
+                    this.Feedback(this.ProjectInfo, $"It uses \"{customFile}\" to open file \"{filePath}\".");
+                    ProcessHelper.StartFile(customFile, filePath, this.Process_OutputDataReceived, this.Process_ErrorDataReceived);
                 }
                 else
                 {
@@ -222,6 +224,7 @@ namespace GithubProjectHandler
                         commandText = "/c " + commandText.Replace(this.pathPlaceholder, filePath).Replace("%1", filePath);
                     }
 
+                    this.Feedback(this.ProjectInfo, $"Run command:{commandText}.");
                     ProcessHelper.StartFile("cmd.exe", commandText, this.Process_OutputDataReceived, this.Process_ErrorDataReceived);
                 }
             }           
