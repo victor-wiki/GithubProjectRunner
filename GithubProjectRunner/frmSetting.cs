@@ -97,12 +97,12 @@ namespace GithubProjectRunner
 
         private void btnBuildRunTool_Click(object sender, EventArgs e)
         {
-            frmLanguageSetting frmBuildRunToolSetting = new frmLanguageSetting();
-            frmBuildRunToolSetting.Setting = this.setting;
-            DialogResult result = frmBuildRunToolSetting.ShowDialog();
+            frmLanguageSetting frmLanguageSetting = new frmLanguageSetting();
+            frmLanguageSetting.Setting = this.setting;
+            DialogResult result = frmLanguageSetting.ShowDialog();
             if(result==DialogResult.OK)
             {
-                this.languageSettings = frmBuildRunToolSetting.LanguageSettings;
+                this.languageSettings = frmLanguageSetting.LanguageSettings;
             }
         }
 
