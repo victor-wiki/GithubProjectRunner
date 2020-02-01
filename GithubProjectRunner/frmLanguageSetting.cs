@@ -46,9 +46,9 @@ namespace GithubProjectRunner
 
                     LanguageInterpreter interpreter = LanguageInterpreterHelper.GetInterpreter(language);
 
-                    setting.SolutionFileExtension = StringHelper.GetNonEmptyValue(oldSetting.SolutionFileExtension, interpreter?.SolutionFileExtension);
-                    setting.ProjectFileExtension = StringHelper.GetNonEmptyValue(oldSetting.ProjectFileExtension, interpreter?.ProjectFileExtension);
-                    setting.ExecutableFileExtension = StringHelper.GetNonEmptyValue(oldSetting.ExecutableFileExtension, interpreter?.ExecutableFileExtension);
+                    setting.SolutionFileExtension = StringHelper.GetNotEmptyValue(oldSetting.SolutionFileExtension, interpreter?.SolutionFileExtension);
+                    setting.ProjectFileExtension = StringHelper.GetNotEmptyValue(oldSetting.ProjectFileExtension, interpreter?.ProjectFileExtension);
+                    setting.ExecutableFileExtension = StringHelper.GetNotEmptyValue(oldSetting.ExecutableFileExtension, interpreter?.ExecutableFileExtension);
                 }
 
                 languageSettings.Add(setting);

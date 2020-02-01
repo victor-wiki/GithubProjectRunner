@@ -8,11 +8,11 @@ namespace GithubProjectHandler
     {
         public override string Language => "C";
 
-        public override string SolutionFileExtension => null;
+        protected override string solutionFileExtension => null;
 
-        public override string ProjectFileExtension => ".c";
+        protected override string projectFileExtension => ".c";
 
-        public override string ExecutableFileExtension => ".exe";
+        protected override string executableFileExtension => ".exe";
 
         public override async Task Build(FileInfo file)
         {

@@ -2,7 +2,7 @@
 {
     public class StringHelper
     {
-        public static string GetNonEmptyValue(params string[] values)
+        public static string GetNotEmptyValue(params string[] values)
         {
             if (values != null)
             {

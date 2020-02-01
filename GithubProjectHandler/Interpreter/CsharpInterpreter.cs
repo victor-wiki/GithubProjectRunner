@@ -12,9 +12,9 @@ namespace GithubProjectHandler
         private Regex errorRegex = new Regex("\\b(error|invalid)\\b");
 
         public override string Language => "C#";
-        public override string SolutionFileExtension => ".sln";
-        public override string ProjectFileExtension => ".csproj";
-        public override string ExecutableFileExtension => ".exe";
+        protected override string solutionFileExtension => ".sln";
+        protected override string projectFileExtension => ".csproj";
+        protected override string executableFileExtension => ".exe";
 
         public override async Task Build(FileInfo file)
         {
@@ -105,18 +105,24 @@ namespace GithubProjectHandler
                 CsharpProjectFileParser parser = new CsharpProjectFileParser(projFile.FullName);
                 CsharpProjectFileInfo info = parser.Parse();
 
-                if (info.OutputType.ToLower().EndsWith(this.ExecutableFileExtension.Trim('.')))
+                if (projFile.Directory.GetFiles("web.config").Length > 0)
                 {
-                    string exeFilePath = Path.Combine(projFile.DirectoryName, info.OutputPath, info.AssemblyName + this.ExecutableFileExtension);
-
-                    if (File.Exists(exeFilePath))
-                    {
-                        this.ProjectInfo.ExecutableFiles.Add(new FileInfo(exeFilePath));
-                    }
+                    this.ProjectInfo.Websites.Add(new WebsiteInfo() { DirectoryInfo = projFile.Directory, IsWebservice = info.IsServiceProject });
                 }
-                else if (projFile.Directory.GetFiles("web.config").Length > 0)
+                else if (!string.IsNullOrEmpty(this.ExecutableFileExtension))
                 {
-                    this.ProjectInfo.Websites.Add(new WebsiteInfo() { DirectoryInfo = projFile.Directory, IsWebservice= info.IsServiceProject });
+                    foreach (string ext in this.ExecutableFileExtension.Split(';'))
+                    {
+                        if (info.OutputType.ToLower().EndsWith(ext.Trim('.')))
+                        {
+                            string exeFilePath = Path.Combine(projFile.DirectoryName, info.OutputPath, info.AssemblyName + ext);
+
+                            if (File.Exists(exeFilePath))
+                            {
+                                this.ProjectInfo.ExecutableFiles.Add(new FileInfo(exeFilePath));
+                            }
+                        }
+                    }
                 }
             }
 
@@ -143,13 +149,13 @@ namespace GithubProjectHandler
                 }
                 else if (this.ProjectInfo.Websites.Count >= 1)
                 {
-                    foreach (var website in this.ProjectInfo.Websites.Where(item=>item.IsWebservice))
+                    foreach (var website in this.ProjectInfo.Websites.Where(item => item.IsWebservice))
                     {
                         this.RunWebsite(website);
                     }
 
                     foreach (var website in this.ProjectInfo.Websites.Where(item => !item.IsWebservice))
-                    {                        
+                    {
                         this.RunWebsite(website);
                     }
                 }
@@ -158,7 +164,7 @@ namespace GithubProjectHandler
 
         private void RunWebsite(WebsiteInfo website)
         {
-            this.Feedback(this.ProjectInfo, $"It begins to start {(website.IsWebservice? "service site": "website")} \"{website.DirectoryInfo.Name}\".");
+            this.Feedback(this.ProjectInfo, $"It begins to start {(website.IsWebservice ? "service site" : "website")} \"{website.DirectoryInfo.Name}\".");
             Utility.RunDonetWebsite(website.DirectoryInfo.Name, (data) =>
             {
                 this.Feedback(this.ProjectInfo, data, FeedbackInfoType.Info);

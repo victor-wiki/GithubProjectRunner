@@ -15,9 +15,14 @@ namespace GithubProjectHandler
         public ProjectInfo ProjectInfo { get; set; }
         public Setting Setting = new Setting();
         public abstract string Language { get; }
-        public abstract string SolutionFileExtension { get; }
-        public abstract string ProjectFileExtension { get; }
-        public abstract string ExecutableFileExtension { get; }
+
+        protected abstract string solutionFileExtension { get; }
+        protected abstract string projectFileExtension { get; }
+        protected abstract string executableFileExtension { get; }
+
+        public virtual string SolutionFileExtension => StringHelper.GetNotEmptyValue(this.LanguageSetting?.SolutionFileExtension, this.solutionFileExtension);
+        public virtual string ProjectFileExtension => StringHelper.GetNotEmptyValue(this.LanguageSetting?.ProjectFileExtension, this.projectFileExtension);
+        public virtual string ExecutableFileExtension => StringHelper.GetNotEmptyValue(this.LanguageSetting?.ExecutableFileExtension, this.executableFileExtension);
 
         public IEnumerable<FileInfo> SolutionFiles { get; protected set; }
         public IEnumerable<FileInfo> ProjectFiles { get; protected set; }
@@ -37,20 +42,20 @@ namespace GithubProjectHandler
 
                 DirectoryInfo di = new DirectoryInfo(workDirectory);
 
-                this.SolutionFiles = string.IsNullOrEmpty(this.SolutionFileExtension) ? Enumerable.Empty<FileInfo>() : di.GetFiles("*" + this.SolutionFileExtension, SearchOption.AllDirectories);
+                this.SolutionFiles = string.IsNullOrEmpty(this.SolutionFileExtension) ? Enumerable.Empty<FileInfo>() : this.GetFilesByExtension(di, this.SolutionFileExtension);
                 int slnFileCount = this.SolutionFiles.Count();
-                this.ProjectFiles = string.IsNullOrEmpty(this.ProjectFileExtension) ? Enumerable.Empty<FileInfo>() : di.GetFiles("*" + this.ProjectFileExtension, SearchOption.AllDirectories);
+                this.ProjectFiles = string.IsNullOrEmpty(this.ProjectFileExtension) ? Enumerable.Empty<FileInfo>() : this.GetFilesByExtension(di, this.ProjectFileExtension);
                 var projFileCount = this.ProjectFiles.Count();
 
                 string afterAction = this.LanguageSetting.AfterAction;
 
                 Action openExplorer = () =>
                 {
-                   this.Feedback(this.ProjectInfo, "It begins to open solution or project in explorer.");
-                   Utility.OpenFolder(workDirectory);
+                    this.Feedback(this.ProjectInfo, "It begins to open solution or project in explorer.");
+                    Utility.OpenFolder(workDirectory);
                 };
 
-                Action openSolutionOrProject = () => 
+                Action openSolutionOrProject = () =>
                 {
                     this.Feedback(this.ProjectInfo, "It begins to open solution or project.");
                     if (slnFileCount > 0)
@@ -77,7 +82,7 @@ namespace GithubProjectHandler
                 switch (afterAction)
                 {
                     case nameof(AfterActionType.BuildAndRun):
-                        if(this.Setting.OpenSolutionOrProjectBeforeBuildingAndRun)
+                        if (this.Setting.OpenSolutionOrProjectBeforeBuildingAndRun)
                         {
                             openSolutionOrProject();
                         }
@@ -104,7 +109,7 @@ namespace GithubProjectHandler
                         {
                             await this.Run();
                         }
-                        
+
                         break;
                     case nameof(AfterActionType.OpenSolutionOrProject):
                         if (this.Setting.OpenExplorerBeforeOpeningSolutionOrProject)
@@ -118,7 +123,7 @@ namespace GithubProjectHandler
                         break;
                     case nameof(AfterActionType.Custom):
                         this.HandleCustomAction();
-                        break;                       
+                        break;
                     default:
                         this.Feedback(this.ProjectInfo, $"You haven't specified action for language {this.ProjectInfo.Language}.", FeedbackInfoType.Warnning);
                         Utility.OpenFolder(workDirectory);
@@ -127,10 +132,23 @@ namespace GithubProjectHandler
             }
         }
 
+        protected IEnumerable<FileInfo> GetFilesByExtension(DirectoryInfo di, string fileExtension)
+        {
+            string[] exts = fileExtension.Split(';');
+
+            List<FileInfo> files = new List<FileInfo>();
+            foreach (string ext in exts)
+            {
+                files.AddRange(di.GetFiles("*" + ext, SearchOption.AllDirectories));
+            }
+
+            return files;
+        }
+
         private void OpenSolutionOrProject(string filePath)
         {
             var languageSetting = this.LanguageSetting;
-            string args = languageSetting?.OpenToolArgs;           
+            string args = languageSetting?.OpenToolArgs;
 
             string arguments = args?.Replace(pathPlaceholder, $"\"{filePath}\"");
 
@@ -146,7 +164,7 @@ namespace GithubProjectHandler
                 else
                 {
                     processStartInfo.Arguments = filePath + (string.IsNullOrEmpty(arguments) ? "" : " " + arguments);
-                }                
+                }
             }
             else if (File.Exists(filePath))
             {
@@ -194,8 +212,8 @@ namespace GithubProjectHandler
             if (string.IsNullOrEmpty(filePath))
             {
                 filePath = this.ProjectFiles.FirstOrDefault()?.FullName;
-            }            
-            
+            }
+
             if (this.LanguageSetting.CustomActionType == CustomActionType.File)
             {
                 string customFile = this.LanguageSetting.CustomActionContent;
@@ -207,13 +225,13 @@ namespace GithubProjectHandler
                 else
                 {
                     this.Feedback(this.ProjectInfo, "Custom action file doesn't exist.", FeedbackInfoType.Error);
-                }               
+                }
             }
-            else if(this.LanguageSetting.CustomActionType == CustomActionType.Text)
+            else if (this.LanguageSetting.CustomActionType == CustomActionType.Text)
             {
                 string commandText = this.LanguageSetting.CustomActionContent;
 
-                if(string.IsNullOrEmpty(commandText))
+                if (string.IsNullOrEmpty(commandText))
                 {
                     this.Feedback(this.ProjectInfo, "Custom action text is empty", FeedbackInfoType.Error);
                 }
@@ -227,7 +245,7 @@ namespace GithubProjectHandler
                     this.Feedback(this.ProjectInfo, $"Run command:{commandText}.");
                     ProcessHelper.StartFile("cmd.exe", commandText, this.Process_OutputDataReceived, this.Process_ErrorDataReceived);
                 }
-            }           
+            }
         }
 
         private void Process_OutputDataReceived(object sender, DataReceivedEventArgs e)

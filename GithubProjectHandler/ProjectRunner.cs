@@ -240,7 +240,7 @@ namespace GithubProjectHandler
                 {
                     this.Feedback(this.projectInfo, $"The project language is {intepreter.Language}, it begins to handle.");
 
-                    intepreter.Setting = this.Setting;
+                    intepreter.Setting = this.Setting;                    
 
                     intepreter.Subscribe(this.observer);
 

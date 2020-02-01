@@ -4,11 +4,11 @@
     {
         public override string Language => "HTML";
 
-        public override string SolutionFileExtension => null;
+        protected override string solutionFileExtension => null;
 
-        public override string ProjectFileExtension => null;
+        protected override string projectFileExtension => null;
 
-        public override string ExecutableFileExtension => null;
+        protected override string executableFileExtension => null;
         
     }
 }
