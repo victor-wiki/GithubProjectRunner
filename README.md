@@ -11,7 +11,7 @@ to run it and preview the effect. This tool just simplifies the steps, it suppor
 ![UI Screenshort](https://github.com/victor-wiki/StaticResources/blob/master/StaticResources/images/projs/GithubProjectRunner/setting.png?raw=true)
 
 ## UI-3
-![UI Screenshort](https://github.com/victor-wiki/StaticResources/blob/master/StaticResources/images/projs/GithubProjectRunner/build&open_setting.png?raw=true)
+![UI Screenshort](https://github.com/victor-wiki/StaticResources/blob/master/StaticResources/images/projs/GithubProjectRunner/languageSetting.png?raw=true)
 
 ## UI-4
-![UI Screenshort](https://github.com/victor-wiki/StaticResources/blob/master/StaticResources/images/projs/GithubProjectRunner/custom%20action.png?raw=true)
+![UI Screenshort](https://github.com/victor-wiki/StaticResources/blob/master/StaticResources/images/projs/GithubProjectRunner/customAction.png?raw=true)
