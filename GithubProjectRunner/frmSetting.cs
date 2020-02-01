@@ -97,7 +97,7 @@ namespace GithubProjectRunner
 
         private void btnBuildRunTool_Click(object sender, EventArgs e)
         {
-            frmBuildOpenToolSetting frmBuildRunToolSetting = new frmBuildOpenToolSetting();
+            frmLanguageSetting frmBuildRunToolSetting = new frmLanguageSetting();
             frmBuildRunToolSetting.Setting = this.setting;
             DialogResult result = frmBuildRunToolSetting.ShowDialog();
             if(result==DialogResult.OK)

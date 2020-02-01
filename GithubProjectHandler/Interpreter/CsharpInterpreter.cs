@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GithubProjectHandler
 {
-    public class CsharpIntepreter : LanguageIntepreter
+    public class CsharpInterpreter : LanguageInterpreter
     {
         private Regex errorRegex = new Regex("\\b(error|invalid)\\b");
 

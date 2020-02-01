@@ -28,6 +28,9 @@ namespace GithubProjectHandler
         public bool OpenAsAdmin { get; set; }
         public CustomActionType CustomActionType { get; set; }
         public string CustomActionContent { get; set; }
+        public string SolutionFileExtension { get; set; }
+        public string ProjectFileExtension { get; set; }
+        public string ExecutableFileExtension { get; set; }
     }
 
     public enum CustomActionType

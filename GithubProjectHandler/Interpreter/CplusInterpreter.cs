@@ -2,17 +2,17 @@
 using System.IO;
 using System.Threading.Tasks;
 
-namespace GithubProjectHandler.Intepreter
+namespace GithubProjectHandler
 {
-    public class PhpIntepreter : LanguageIntepreter
+    public class CplusInterpreter : LanguageInterpreter
     {
-        public override string Language => "PHP";
+        public override string Language => "C++";
 
         public override string SolutionFileExtension => null;
 
-        public override string ProjectFileExtension => null;
+        public override string ProjectFileExtension => ".cpp";
 
-        public override string ExecutableFileExtension => null;
+        public override string ExecutableFileExtension => ".exe";
 
         public override async Task Build(FileInfo file)
         {

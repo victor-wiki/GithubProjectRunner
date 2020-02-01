@@ -17,7 +17,7 @@ namespace GithubProjectRunner
         {
             get
             {
-                if(_setting==null)
+                if (_setting == null)
                 {
                     return GetSetting();
                 }
@@ -28,10 +28,10 @@ namespace GithubProjectRunner
 
         public static Setting GetSetting()
         {
-            if(File.Exists(settingFileName))
+            if (File.Exists(settingFileName))
             {
                 string content = File.ReadAllText(settingFileName);
-                Setting setting = (Setting) JsonConvert.DeserializeObject(content, typeof(Setting));
+                Setting setting = (Setting)JsonConvert.DeserializeObject(content, typeof(Setting));
                 return setting;
             }
             else

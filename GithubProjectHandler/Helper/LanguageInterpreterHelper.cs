@@ -9,26 +9,36 @@ namespace GithubProjectHandler
 {
     public class LanguageInterpreterHelper
     {
-        public static LanguageIntepreter GetInterpreter(ProjectInfo projectInfo)
+        public static LanguageInterpreter GetInterpreter(ProjectInfo projectInfo)
         {
-            var assembly = Assembly.GetExecutingAssembly();         
+            LanguageInterpreter interpreter = GetInterpreter(projectInfo.Language);
+            if (interpreter != null)
+            {
+                interpreter.ProjectInfo = projectInfo;
+                return interpreter;
+            }
+
+            return null;
+        }
+
+        public static LanguageInterpreter GetInterpreter(string language)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
             var typeArray = assembly.ExportedTypes;
 
             var types = (from type in typeArray
-                         where type.IsSubclassOf(typeof(LanguageIntepreter))
+                         where type.IsSubclassOf(typeof(LanguageInterpreter))
                          select type).ToList();
 
             foreach (var type in types)
             {
-                LanguageIntepreter interpreter  = (LanguageIntepreter)Activator.CreateInstance(type);
+                LanguageInterpreter interpreter = (LanguageInterpreter)Activator.CreateInstance(type);
 
-                if (interpreter.Language == projectInfo.Language)
+                if (interpreter.Language == language)
                 {
-                    interpreter.ProjectInfo = projectInfo;
                     return interpreter;
                 }
             }
-            
             return null;
         }
     }

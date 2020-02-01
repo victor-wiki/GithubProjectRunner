@@ -1,6 +1,6 @@
 ﻿namespace GithubProjectRunner
 {
-    partial class frmBuildOpenToolSetting
+    partial class frmLanguageSetting
     {
         /// <summary>
         /// Required designer variable.
@@ -41,6 +41,9 @@
             this.OpenToolArgs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpenAsAdmin = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CustomActionContent = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.SolutionFileExtension = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProjectFileExtension = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExecutableFileExtension = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,7 +84,10 @@
             this.OpenToolPath,
             this.OpenToolArgs,
             this.OpenAsAdmin,
-            this.CustomActionContent});
+            this.CustomActionContent,
+            this.SolutionFileExtension,
+            this.ProjectFileExtension,
+            this.ExecutableFileExtension});
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
@@ -170,7 +176,25 @@
             this.CustomActionContent.Text = "Define";
             this.CustomActionContent.UseColumnTextForButtonValue = true;
             // 
-            // frmBuildOpenToolSetting
+            // SolutionFileExtension
+            // 
+            this.SolutionFileExtension.DataPropertyName = "SolutionFileExtension";
+            this.SolutionFileExtension.HeaderText = "Solution file extension";
+            this.SolutionFileExtension.Name = "SolutionFileExtension";
+            // 
+            // ProjectFileExtension
+            // 
+            this.ProjectFileExtension.DataPropertyName = "ProjectFileExtension";
+            this.ProjectFileExtension.HeaderText = "Project file extension";
+            this.ProjectFileExtension.Name = "ProjectFileExtension";
+            // 
+            // ExecutableFileExtension
+            // 
+            this.ExecutableFileExtension.DataPropertyName = "ExecutableFileExtension";
+            this.ExecutableFileExtension.HeaderText = "Executable file extension";
+            this.ExecutableFileExtension.Name = "ExecutableFileExtension";
+            // 
+            // frmLanguageSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -179,9 +203,9 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
-            this.Name = "frmBuildOpenToolSetting";
+            this.Name = "frmLanguageSetting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Build and open tool setting";
+            this.Text = "Language setting";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmBuildOpenToolSetting_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -205,5 +229,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn OpenToolArgs;
         private System.Windows.Forms.DataGridViewCheckBoxColumn OpenAsAdmin;
         private System.Windows.Forms.DataGridViewButtonColumn CustomActionContent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SolutionFileExtension;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProjectFileExtension;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExecutableFileExtension;
     }
 }

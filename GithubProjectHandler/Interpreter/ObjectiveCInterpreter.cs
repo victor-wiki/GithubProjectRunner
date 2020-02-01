@@ -2,15 +2,15 @@
 using System.IO;
 using System.Threading.Tasks;
 
-namespace GithubProjectHandler.Intepreter
+namespace GithubProjectHandler
 {
-    public class CplusIntepreter : LanguageIntepreter
+    public class ObjectiveCInterpreter : LanguageInterpreter
     {
-        public override string Language => "C++";
+        public override string Language => "Objective-C";
 
         public override string SolutionFileExtension => null;
 
-        public override string ProjectFileExtension => ".cpp";
+        public override string ProjectFileExtension => ".m";
 
         public override string ExecutableFileExtension => ".exe";
 

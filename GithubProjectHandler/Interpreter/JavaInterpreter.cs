@@ -2,15 +2,15 @@
 using System.IO;
 using System.Threading.Tasks;
 
-namespace GithubProjectHandler.Intepreter
+namespace GithubProjectHandler
 {
-    public class CIntepreter : LanguageIntepreter
+    public class JavaInterpreter : LanguageInterpreter
     {
-        public override string Language => "C";
+        public override string Language => "Java";
 
         public override string SolutionFileExtension => null;
 
-        public override string ProjectFileExtension => ".c";
+        public override string ProjectFileExtension => null;
 
         public override string ExecutableFileExtension => ".exe";
 

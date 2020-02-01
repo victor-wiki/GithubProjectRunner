@@ -2,17 +2,17 @@
 using System.IO;
 using System.Threading.Tasks;
 
-namespace GithubProjectHandler.Intepreter
+namespace GithubProjectHandler
 {
-    public class ObjectiveCIntepreter : LanguageIntepreter
+    public class PythonInterpreter : LanguageInterpreter
     {
-        public override string Language => "Objective-C";
+        public override string Language => "Python";
 
         public override string SolutionFileExtension => null;
 
-        public override string ProjectFileExtension => ".m";
+        public override string ProjectFileExtension => null;
 
-        public override string ExecutableFileExtension => ".exe";
+        public override string ExecutableFileExtension => null;
 
         public override async Task Build(FileInfo file)
         {

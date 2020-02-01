@@ -2,11 +2,11 @@
 using System.IO;
 using System.Threading.Tasks;
 
-namespace GithubProjectHandler.Intepreter
+namespace GithubProjectHandler
 {
-    public class PythonIntepreter : LanguageIntepreter
+    public class PhpInterpreter : LanguageInterpreter
     {
-        public override string Language => "Python";
+        public override string Language => "PHP";
 
         public override string SolutionFileExtension => null;
 

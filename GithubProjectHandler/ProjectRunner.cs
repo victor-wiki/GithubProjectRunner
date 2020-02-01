@@ -234,7 +234,7 @@ namespace GithubProjectHandler
         {
             if (Directory.Exists(this.projectInfo.WorkDirectory))
             {
-                LanguageIntepreter intepreter = LanguageInterpreterHelper.GetInterpreter(this.projectInfo);
+                LanguageInterpreter intepreter = LanguageInterpreterHelper.GetInterpreter(this.projectInfo);
 
                 if (intepreter != null)
                 {

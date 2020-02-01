@@ -127,11 +127,11 @@
     <Compile Include="Cef\ExtChromiumBrowser.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="frmBuildOpenToolSetting.cs">
+    <Compile Include="frmLanguageSetting.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBuildOpenToolSetting.Designer.cs">
-      <DependentUpon>frmBuildOpenToolSetting.cs</DependentUpon>
+    <Compile Include="frmLanguageSetting.Designer.cs">
+      <DependentUpon>frmLanguageSetting.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCustomAction.cs">
       <SubType>Form</SubType>
@@ -161,8 +161,8 @@
     <Compile Include="Manager\SettingManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmBuildOpenToolSetting.resx">
-      <DependentUpon>frmBuildOpenToolSetting.cs</DependentUpon>
+    <EmbeddedResource Include="frmLanguageSetting.resx">
+      <DependentUpon>frmLanguageSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCustomAction.resx">
       <DependentUpon>frmCustomAction.cs</DependentUpon>

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GithubProjectHandler
 {
-    public abstract class LanguageIntepreter
+    public abstract class LanguageInterpreter
     {
         private IObserver<FeedbackInfo> observer;
         private string pathPlaceholder = "$path$";

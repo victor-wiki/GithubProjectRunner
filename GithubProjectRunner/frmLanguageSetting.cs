@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace GithubProjectRunner
 {
-    public partial class frmBuildOpenToolSetting : Form
+    public partial class frmLanguageSetting : Form
     {
         public Setting Setting { get; set; } = new Setting();
 
@@ -20,7 +20,7 @@ namespace GithubProjectRunner
 
         private List<LanguageSetting> languageSettings = new List<LanguageSetting>();
 
-        public frmBuildOpenToolSetting()
+        public frmLanguageSetting()
         {
             InitializeComponent();
         }
@@ -43,6 +43,12 @@ namespace GithubProjectRunner
                     setting.OpenAsAdmin = oldSetting.OpenAsAdmin;
                     setting.CustomActionType = oldSetting.CustomActionType;
                     setting.CustomActionContent = oldSetting.CustomActionContent;
+
+                    LanguageInterpreter interpreter = LanguageInterpreterHelper.GetInterpreter(language);
+
+                    setting.SolutionFileExtension = StringHelper.GetNonEmptyValue(oldSetting.SolutionFileExtension, interpreter?.SolutionFileExtension);
+                    setting.ProjectFileExtension = StringHelper.GetNonEmptyValue(oldSetting.ProjectFileExtension, interpreter?.ProjectFileExtension);
+                    setting.ExecutableFileExtension = StringHelper.GetNonEmptyValue(oldSetting.ExecutableFileExtension, interpreter?.ExecutableFileExtension);
                 }
 
                 languageSettings.Add(setting);
@@ -70,6 +76,9 @@ namespace GithubProjectRunner
                     setting.OpenToolPath = row.Cells["OpenToolPath"].Value?.ToString();
                     setting.OpenToolArgs = row.Cells["OpenToolArgs"].Value?.ToString();
                     setting.OpenAsAdmin = row.Cells["OpenAsAdmin"]?.Value?.ToString() == "True";
+                    setting.SolutionFileExtension = row.Cells["SolutionFileExtension"]?.Value?.ToString();
+                    setting.ProjectFileExtension = row.Cells["ProjectFileExtension"]?.Value?.ToString();
+                    setting.ExecutableFileExtension = row.Cells["ExecutableFileExtension"]?.Value?.ToString();
                 }
             }
 

@@ -1,6 +1,6 @@
 ﻿namespace GithubProjectHandler
 {
-    public class HtmlIntepreter : LanguageIntepreter
+    public class HtmlInterpreter : LanguageInterpreter
     {
         public override string Language => "HTML";
 
