@@ -90,8 +90,7 @@ namespace GithubProjectHandler
                         if (slnFileCount > 0)
                         {
                             foreach (var slnFile in this.SolutionFiles)
-                            {
-                                this.Feedback(this.ProjectInfo, $"Build solution using file \"{slnFile.FullName}\".");
+                            {                                
                                 await this.Build(slnFile);
                             }
                         }
