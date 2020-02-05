@@ -219,7 +219,7 @@ namespace GithubProjectRunner
                 MessageBox.Show("Url can't be empty.");
                 return;
             }
-            Process.Start(this.txtUrl.Text);
+            Utility.OpenUrl(this.txtUrl.Text);
         }
 
         private async void btnRun_Click(object sender, EventArgs e)
