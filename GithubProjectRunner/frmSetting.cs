@@ -95,7 +95,7 @@ namespace GithubProjectRunner
             }
         }
 
-        private void btnBuildRunTool_Click(object sender, EventArgs e)
+        private void btnLanguageSetting_Click(object sender, EventArgs e)
         {
             frmLanguageSetting frmLanguageSetting = new frmLanguageSetting();
             frmLanguageSetting.Setting = this.setting;

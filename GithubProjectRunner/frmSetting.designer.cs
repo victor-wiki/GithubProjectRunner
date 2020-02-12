@@ -40,7 +40,7 @@
             this.dlgDownloadFileSaveFlolder = new System.Windows.Forms.FolderBrowserDialog();
             this.chkAlwaysGetLatestVersion = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnBuildRunTool = new System.Windows.Forms.Button();
+            this.btnLanguageSetting = new System.Windows.Forms.Button();
             this.btnOpenGitWorkFolder = new System.Windows.Forms.Button();
             this.txtGitWorkFolder = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -161,15 +161,15 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Language settings:";
             // 
-            // btnBuildRunTool
+            // btnLanguageSetting
             // 
-            this.btnBuildRunTool.Location = new System.Drawing.Point(137, 92);
-            this.btnBuildRunTool.Name = "btnBuildRunTool";
-            this.btnBuildRunTool.Size = new System.Drawing.Size(75, 23);
-            this.btnBuildRunTool.TabIndex = 10;
-            this.btnBuildRunTool.Text = "Config";
-            this.btnBuildRunTool.UseVisualStyleBackColor = true;
-            this.btnBuildRunTool.Click += new System.EventHandler(this.btnBuildRunTool_Click);
+            this.btnLanguageSetting.Location = new System.Drawing.Point(137, 92);
+            this.btnLanguageSetting.Name = "btnLanguageSetting";
+            this.btnLanguageSetting.Size = new System.Drawing.Size(75, 23);
+            this.btnLanguageSetting.TabIndex = 10;
+            this.btnLanguageSetting.Text = "Config";
+            this.btnLanguageSetting.UseVisualStyleBackColor = true;
+            this.btnLanguageSetting.Click += new System.EventHandler(this.btnLanguageSetting_Click);
             // 
             // btnOpenGitWorkFolder
             // 
@@ -270,7 +270,7 @@
             this.Controls.Add(this.btnOpenGitWorkFolder);
             this.Controls.Add(this.txtGitWorkFolder);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnBuildRunTool);
+            this.Controls.Add(this.btnLanguageSetting);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.chkAlwaysGetLatestVersion);
             this.Controls.Add(this.groupBox2);
@@ -304,7 +304,7 @@
         private System.Windows.Forms.FolderBrowserDialog dlgDownloadFileSaveFlolder;
         private System.Windows.Forms.CheckBox chkAlwaysGetLatestVersion;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnBuildRunTool;
+        private System.Windows.Forms.Button btnLanguageSetting;
         private System.Windows.Forms.Button btnOpenGitWorkFolder;
         private System.Windows.Forms.TextBox txtGitWorkFolder;
         private System.Windows.Forms.Label label2;
