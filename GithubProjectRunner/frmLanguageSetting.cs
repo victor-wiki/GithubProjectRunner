@@ -42,14 +42,14 @@ namespace GithubProjectRunner
                     setting.OpenToolArgs = oldSetting.OpenToolArgs;
                     setting.OpenAsAdmin = oldSetting.OpenAsAdmin;
                     setting.CustomActionType = oldSetting.CustomActionType;
-                    setting.CustomActionContent = oldSetting.CustomActionContent;
-
-                    LanguageInterpreter interpreter = LanguageInterpreterHelper.GetInterpreter(language);
-
-                    setting.SolutionFileExtension = StringHelper.GetNotEmptyValue(oldSetting.SolutionFileExtension, interpreter?.SolutionFileExtension);
-                    setting.ProjectFileExtension = StringHelper.GetNotEmptyValue(oldSetting.ProjectFileExtension, interpreter?.ProjectFileExtension);
-                    setting.ExecutableFileExtension = StringHelper.GetNotEmptyValue(oldSetting.ExecutableFileExtension, interpreter?.ExecutableFileExtension);
+                    setting.CustomActionContent = oldSetting.CustomActionContent;                   
                 }
+
+                LanguageInterpreter interpreter = LanguageInterpreterHelper.GetInterpreter(language);
+
+                setting.SolutionFileExtension = StringHelper.GetNotEmptyValue(oldSetting?.SolutionFileExtension, interpreter?.SolutionFileExtension);
+                setting.ProjectFileExtension = StringHelper.GetNotEmptyValue(oldSetting?.ProjectFileExtension, interpreter?.ProjectFileExtension);
+                setting.ExecutableFileExtension = StringHelper.GetNotEmptyValue(oldSetting?.ExecutableFileExtension, interpreter?.ExecutableFileExtension);
 
                 languageSettings.Add(setting);
             }
