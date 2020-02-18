@@ -97,7 +97,7 @@
     <Compile Include="Interpreter\CssInterpreter.cs" />
     <Compile Include="Interpreter\HtmlInterpreter.cs" />
     <Compile Include="Interpreter\JavaInterpreter.cs" />
-    <Compile Include="Interpreter\JavascriptInterpreter.cs" />
+    <Compile Include="Interpreter\JavaScriptInterpreter.cs" />
     <Compile Include="Interpreter\LanguageInterpreter.cs" />
     <Compile Include="Interpreter\ObjectiveCInterpreter.cs" />
     <Compile Include="Interpreter\PhpInterpreter.cs" />
