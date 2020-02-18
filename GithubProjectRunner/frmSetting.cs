@@ -27,6 +27,7 @@ namespace GithubProjectRunner
             this.txtHomepage.Text = setting.HomePage;
             this.txtDownloadFolder.Text = setting.DownloadFolder;
             this.txtGitWorkFolder.Text = setting.GitWorkFolder;
+            this.chkUseGitInsteadOfHttps.Checked = setting.UseGitInsteadOfHttps;
             this.chkAlwaysGetLatestVersion.Checked = setting.AlwaysGetlatestVersion;
             this.chkEnableLog.Checked = setting.EnableLog;
             this.chkEnableDebug.Checked = setting.EnableDebug;
@@ -62,6 +63,7 @@ namespace GithubProjectRunner
             setting.HomePage = this.txtHomepage.Text;
             setting.DownloadFolder = this.txtDownloadFolder.Text;
             setting.GitWorkFolder = this.txtGitWorkFolder.Text;
+            setting.UseGitInsteadOfHttps = this.chkUseGitInsteadOfHttps.Checked;
             setting.AlwaysGetlatestVersion = this.chkAlwaysGetLatestVersion.Checked;
             setting.EnableLog = this.chkEnableLog.Checked;
             setting.EnableDebug = this.chkEnableDebug.Checked;           

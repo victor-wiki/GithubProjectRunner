@@ -11,6 +11,7 @@ namespace GithubProjectHandler
         public bool EnableLog { get; set; } = true;
         public bool EnableDebug { get; set; } = true;
         public bool AlwaysGetlatestVersion { get; set; } = true;
+        public bool UseGitInsteadOfHttps { get; set; } = true;
         public bool OpenExplorerBeforeOpeningSolutionOrProject { get; set; }
         public bool OpenSolutionOrProjectBeforeBuildingAndRun { get; set; }
 

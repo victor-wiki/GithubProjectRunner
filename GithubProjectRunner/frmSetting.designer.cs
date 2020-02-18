@@ -39,18 +39,19 @@
             this.chkEnableLog = new System.Windows.Forms.CheckBox();
             this.dlgDownloadFileSaveFlolder = new System.Windows.Forms.FolderBrowserDialog();
             this.chkAlwaysGetLatestVersion = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnLanguageSetting = new System.Windows.Forms.Button();
             this.btnOpenGitWorkFolder = new System.Windows.Forms.Button();
             this.txtGitWorkFolder = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dlgGitProjectWorkFolder = new System.Windows.Forms.FolderBrowserDialog();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHomepage = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cboLanguage = new System.Windows.Forms.ComboBox();
             this.chkOpenExplorerBeforeOpeningProject = new System.Windows.Forms.CheckBox();
             this.chkOpenProjectBeforeBuildingAndRun = new System.Windows.Forms.CheckBox();
+            this.chkUseGitInsteadOfHttps = new System.Windows.Forms.CheckBox();
+            this.cboLanguage = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnLanguageSetting = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,7 +87,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(474, 338);
+            this.btnOK.Location = new System.Drawing.Point(474, 366);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 13;
@@ -97,7 +98,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(555, 338);
+            this.btnCancel.Location = new System.Drawing.Point(555, 366);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 14;
@@ -109,7 +110,7 @@
             // 
             this.groupBox2.Controls.Add(this.chkEnableDebug);
             this.groupBox2.Controls.Add(this.chkEnableLog);
-            this.groupBox2.Location = new System.Drawing.Point(9, 265);
+            this.groupBox2.Location = new System.Drawing.Point(9, 287);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(621, 67);
             this.groupBox2.TabIndex = 8;
@@ -145,31 +146,12 @@
             this.chkAlwaysGetLatestVersion.AutoSize = true;
             this.chkAlwaysGetLatestVersion.Checked = true;
             this.chkAlwaysGetLatestVersion.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkAlwaysGetLatestVersion.Location = new System.Drawing.Point(14, 167);
+            this.chkAlwaysGetLatestVersion.Location = new System.Drawing.Point(14, 189);
             this.chkAlwaysGetLatestVersion.Name = "chkAlwaysGetLatestVersion";
             this.chkAlwaysGetLatestVersion.Size = new System.Drawing.Size(174, 16);
             this.chkAlwaysGetLatestVersion.TabIndex = 8;
             this.chkAlwaysGetLatestVersion.Text = "Always get latest version";
             this.chkAlwaysGetLatestVersion.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 98);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 12);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Language settings:";
-            // 
-            // btnLanguageSetting
-            // 
-            this.btnLanguageSetting.Location = new System.Drawing.Point(137, 92);
-            this.btnLanguageSetting.Name = "btnLanguageSetting";
-            this.btnLanguageSetting.Size = new System.Drawing.Size(75, 23);
-            this.btnLanguageSetting.TabIndex = 10;
-            this.btnLanguageSetting.Text = "Config";
-            this.btnLanguageSetting.UseVisualStyleBackColor = true;
-            this.btnLanguageSetting.Click += new System.EventHandler(this.btnLanguageSetting_Click);
             // 
             // btnOpenGitWorkFolder
             // 
@@ -218,28 +200,10 @@
             this.txtHomepage.Size = new System.Drawing.Size(416, 21);
             this.txtHomepage.TabIndex = 1;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 133);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(119, 12);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Preferred language:";
-            // 
-            // cboLanguage
-            // 
-            this.cboLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboLanguage.FormattingEnabled = true;
-            this.cboLanguage.Location = new System.Drawing.Point(137, 130);
-            this.cboLanguage.Name = "cboLanguage";
-            this.cboLanguage.Size = new System.Drawing.Size(75, 20);
-            this.cboLanguage.TabIndex = 16;
-            // 
             // chkOpenExplorerBeforeOpeningProject
             // 
             this.chkOpenExplorerBeforeOpeningProject.AutoSize = true;
-            this.chkOpenExplorerBeforeOpeningProject.Location = new System.Drawing.Point(14, 199);
+            this.chkOpenExplorerBeforeOpeningProject.Location = new System.Drawing.Point(14, 221);
             this.chkOpenExplorerBeforeOpeningProject.Name = "chkOpenExplorerBeforeOpeningProject";
             this.chkOpenExplorerBeforeOpeningProject.Size = new System.Drawing.Size(312, 16);
             this.chkOpenExplorerBeforeOpeningProject.TabIndex = 17;
@@ -249,29 +213,78 @@
             // chkOpenProjectBeforeBuildingAndRun
             // 
             this.chkOpenProjectBeforeBuildingAndRun.AutoSize = true;
-            this.chkOpenProjectBeforeBuildingAndRun.Location = new System.Drawing.Point(14, 230);
+            this.chkOpenProjectBeforeBuildingAndRun.Location = new System.Drawing.Point(14, 252);
             this.chkOpenProjectBeforeBuildingAndRun.Name = "chkOpenProjectBeforeBuildingAndRun";
             this.chkOpenProjectBeforeBuildingAndRun.Size = new System.Drawing.Size(312, 16);
             this.chkOpenProjectBeforeBuildingAndRun.TabIndex = 18;
             this.chkOpenProjectBeforeBuildingAndRun.Text = "Open solution or project before building and run";
             this.chkOpenProjectBeforeBuildingAndRun.UseVisualStyleBackColor = true;
             // 
+            // chkUseGitInsteadOfHttps
+            // 
+            this.chkUseGitInsteadOfHttps.AutoSize = true;
+            this.chkUseGitInsteadOfHttps.Checked = true;
+            this.chkUseGitInsteadOfHttps.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkUseGitInsteadOfHttps.Location = new System.Drawing.Point(14, 161);
+            this.chkUseGitInsteadOfHttps.Name = "chkUseGitInsteadOfHttps";
+            this.chkUseGitInsteadOfHttps.Size = new System.Drawing.Size(258, 16);
+            this.chkUseGitInsteadOfHttps.TabIndex = 19;
+            this.chkUseGitInsteadOfHttps.Text = "Use git instead of https when git clone";
+            this.chkUseGitInsteadOfHttps.UseVisualStyleBackColor = true;
+            // 
+            // cboLanguage
+            // 
+            this.cboLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboLanguage.FormattingEnabled = true;
+            this.cboLanguage.Location = new System.Drawing.Point(137, 127);
+            this.cboLanguage.Name = "cboLanguage";
+            this.cboLanguage.Size = new System.Drawing.Size(75, 20);
+            this.cboLanguage.TabIndex = 23;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 130);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(119, 12);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Preferred language:";
+            // 
+            // btnLanguageSetting
+            // 
+            this.btnLanguageSetting.Location = new System.Drawing.Point(137, 94);
+            this.btnLanguageSetting.Name = "btnLanguageSetting";
+            this.btnLanguageSetting.Size = new System.Drawing.Size(75, 23);
+            this.btnLanguageSetting.TabIndex = 21;
+            this.btnLanguageSetting.Text = "Config";
+            this.btnLanguageSetting.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 100);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(113, 12);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Language settings:";
+            // 
             // frmSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 373);
-            this.Controls.Add(this.chkOpenProjectBeforeBuildingAndRun);
-            this.Controls.Add(this.chkOpenExplorerBeforeOpeningProject);
+            this.ClientSize = new System.Drawing.Size(648, 401);
             this.Controls.Add(this.cboLanguage);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnLanguageSetting);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.chkUseGitInsteadOfHttps);
+            this.Controls.Add(this.chkOpenProjectBeforeBuildingAndRun);
+            this.Controls.Add(this.chkOpenExplorerBeforeOpeningProject);
             this.Controls.Add(this.txtHomepage);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnOpenGitWorkFolder);
             this.Controls.Add(this.txtGitWorkFolder);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnLanguageSetting);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.chkAlwaysGetLatestVersion);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnCancel);
@@ -303,17 +316,18 @@
         private System.Windows.Forms.CheckBox chkEnableDebug;
         private System.Windows.Forms.FolderBrowserDialog dlgDownloadFileSaveFlolder;
         private System.Windows.Forms.CheckBox chkAlwaysGetLatestVersion;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnLanguageSetting;
         private System.Windows.Forms.Button btnOpenGitWorkFolder;
         private System.Windows.Forms.TextBox txtGitWorkFolder;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FolderBrowserDialog dlgGitProjectWorkFolder;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtHomepage;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cboLanguage;
         private System.Windows.Forms.CheckBox chkOpenExplorerBeforeOpeningProject;
         private System.Windows.Forms.CheckBox chkOpenProjectBeforeBuildingAndRun;
+        private System.Windows.Forms.CheckBox chkUseGitInsteadOfHttps;
+        private System.Windows.Forms.ComboBox cboLanguage;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnLanguageSetting;
+        private System.Windows.Forms.Label label3;
     }
 }

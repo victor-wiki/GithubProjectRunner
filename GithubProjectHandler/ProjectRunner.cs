@@ -148,16 +148,28 @@ namespace GithubProjectHandler
                     {
                         Username = creds.Username,
                         Password = creds.Password
-                    },
+                    }
                 };
 
-                this.Feedback(this.projectInfo, $"It begins to git clone \"{this.projectInfo.GitUrl}\".");
+                string gitUrl = this.projectInfo.GitUrl;
 
-                Repository.Clone(this.projectInfo.GitUrl, this.projectInfo.WorkDirectory, options);
+                if(this.Setting.UseGitInsteadOfHttps)
+                {
+                    gitUrl = gitUrl.Replace("https://", "git://");
+                }
 
-                this.Feedback(this.projectInfo, $"It has git cloned \"{this.projectInfo.Name}\".");
+                this.Feedback(this.projectInfo, $"It begins to git clone \"{gitUrl}\".");
 
-                await this.Execute();
+                var task = Task.Factory.StartNew(new Action(() =>
+                {
+                    Repository.Clone(gitUrl, this.projectInfo.WorkDirectory, options);
+                }));
+
+                await task.ContinueWith(i => 
+                {
+                    this.Feedback(this.projectInfo, $"It has git cloned \"{this.projectInfo.Name}\".");
+                    return this.Execute();
+                });          
             }
         }
 
@@ -199,7 +211,7 @@ namespace GithubProjectHandler
             }
         }
 
-        private void Wc_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        private async void Wc_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
             if (e.Cancelled)
             {
@@ -214,7 +226,7 @@ namespace GithubProjectHandler
             this.Feedback(this.projectInfo, "The zip file has been downloaded.");
 
             this.UnzipFile();
-            this.Execute();
+            await this.Execute();
         }
 
         private string UnzipFile()
