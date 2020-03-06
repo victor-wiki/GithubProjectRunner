@@ -258,6 +258,7 @@
             this.btnLanguageSetting.TabIndex = 21;
             this.btnLanguageSetting.Text = "Config";
             this.btnLanguageSetting.UseVisualStyleBackColor = true;
+            this.btnLanguageSetting.Click += new System.EventHandler(this.btnLanguageSetting_Click);
             // 
             // label3
             // 

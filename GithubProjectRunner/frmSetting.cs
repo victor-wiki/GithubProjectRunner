@@ -120,6 +120,6 @@ namespace GithubProjectRunner
             {
                 this.txtGitWorkFolder.Text = this.dlgGitProjectWorkFolder.SelectedPath;
             }
-        }
+        }        
     }
 }

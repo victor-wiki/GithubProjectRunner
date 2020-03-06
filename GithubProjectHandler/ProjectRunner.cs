@@ -236,7 +236,8 @@ namespace GithubProjectHandler
                 this.Feedback(this.projectInfo, $"Unzip file \"{this.projectInfo.DownloadedFilePath}\".");
                 FileInfo file = new FileInfo(this.projectInfo.DownloadedFilePath);
                 string extractFolder = file.DirectoryName;
-                (new FastZip()).ExtractZip(this.projectInfo.DownloadedFilePath, extractFolder, "");
+                (new FastZip()).ExtractZip(this.projectInfo.DownloadedFilePath, extractFolder, "");              
+
                 return extractFolder;
             }
             return string.Empty;
@@ -268,12 +269,8 @@ namespace GithubProjectHandler
 
         private void HandleError(object sender, AsyncCompletedEventArgs e)
         {
-            string errMsg = e.Error.Message;
-            if (e.Error.InnerException != null)
-            {
-                errMsg += "," + e.Error.InnerException.Message;
-            }
-            this.Feedback(this.projectInfo, $"Failed to download file \"{this.projectInfo.DownloadUrl}\":{errMsg}");
+            string errMsg = ExceptionHelper.GetExceptionDetails(e.Error);
+            this.Feedback(this.projectInfo, $"Failed to download file \"{this.projectInfo.DownloadUrl}\":{Environment.NewLine}{errMsg}", FeedbackInfoType.Error);
         }
 
         public void Subscribe(IObserver<FeedbackInfo> observer)

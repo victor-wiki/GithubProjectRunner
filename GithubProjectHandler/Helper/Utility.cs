@@ -100,8 +100,10 @@ namespace GithubProjectHandler
             bool valid = true;
             try
             {
-                ZipFile zipFile = new ZipFile(filePath);
-                valid = zipFile.TestArchive(true, TestStrategy.FindFirstError, null);
+                using (ZipFile zipFile = new ZipFile(filePath))
+                {
+                    valid = zipFile.TestArchive(true, TestStrategy.FindFirstError, null);
+                }                    
             }
             catch (Exception ex)
             {

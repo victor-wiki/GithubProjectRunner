@@ -313,26 +313,23 @@ namespace GithubProjectRunner
         {
             this.Invoke(new Action(() =>
             {
-                if (info.InfoType != FeedbackInfoType.Info)
-                {
-                    this.AppendSpecialMessage(info);
-                }
-                else
-                {
-                    this.txtMessage.Text += (this.txtMessage.Text.Length > 0 ? Environment.NewLine : "") + info.Content;
-                }
-
-                this.txtMessage.SelectionStart = this.txtMessage.TextLength;
-                this.txtMessage.ScrollToCaret();
+                this.AppendMessage(info);
             }));
         }
 
-        private void AppendSpecialMessage(FeedbackInfo info)
+        private void AppendMessage(FeedbackInfo info)
         {
             int start = this.txtMessage.Text.Length;
-            this.txtMessage.Text += (this.txtMessage.Text.Length > 0 ? Environment.NewLine : "") + info.Content;
 
-            this.txtMessage.Select(start, info.Content.Length + 1);
+            if (start > 0)
+            {
+                this.txtMessage.AppendText(Environment.NewLine);
+            }
+
+            this.txtMessage.AppendText(info.Content);
+
+            this.txtMessage.Select(start, this.txtMessage.Text.Length - start);
+
             Color color = Color.Black;
             if (info.InfoType == FeedbackInfoType.Warnning)
             {
@@ -342,7 +339,11 @@ namespace GithubProjectRunner
             {
                 color = Color.Red;
             }
+
             this.txtMessage.SelectionColor = color;
-        }
+
+            this.txtMessage.SelectionStart = this.txtMessage.TextLength;
+            this.txtMessage.ScrollToCaret();
+        }        
     }
 }
